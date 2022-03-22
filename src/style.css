@@ -1,7 +1,75 @@
-.hello {
-  color: red;
+*::after,
+*::before,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: bisque;
+  font-family: 'Rubik', Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #555;
+}
+
+.delete {
+  display: none;
+}
+
+main {
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.head,
+.add-task,
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 140px;
+  padding: 8px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.input {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #555;
+}
+
+.content {
+  display: flex;
+  gap: 10px;
+}
+
+.check:checked + .input {
+  text-decoration: line-through #ec5242;
+}
+
+.check {
+  zoom: 1.4;
+}
+
+.drag {
+  cursor: move;
+}
+
+span,
+.clear-all {
+  cursor: pointer;
+}
+
+.clear-all {
+  padding: 10px;
+  text-align: center;
+  background-color: #e6e6e6;
+}
+
+span:hover,
+.clear-all:hover {
+  color: #ec5242;
 }
