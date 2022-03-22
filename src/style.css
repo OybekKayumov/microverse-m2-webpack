@@ -47,7 +47,7 @@ li {
 }
 
 .check:checked + .input {
-  text-decoration: line-through #ec5242;
+  text-decoration: line-through #ec4252;
 }
 
 .check {
@@ -71,5 +71,5 @@ span,
 
 span:hover,
 .clear-all:hover {
-  color: #ec5242;
+  color: #ec4252;
 }
