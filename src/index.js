@@ -30,7 +30,26 @@ const renderTasks = () => {
           </li>
       `;
     });
-  
+
+  const lists = document.querySelectorAll('li');
+  lists.forEach((list) => {
+    list.addEventListener('click', (e) => {
+      const elem = e.target;
+      if (elem.classList.contains('drag') || elem.classList.contains('check')) {
+        return;
+      }
+
+      lists.forEach((elem) => elem.classList.remove('active'));
+
+      list.classList.add('active');
+
+      const inp = list.querySelector('.input');
+      inp.readOnly = false;
+      inp.focus();
+      inp.setSelectionsRange(inp.value.length, inp.value.length);
+    });
+  });
+
   document.querySelectorAll('li .input').forEach((inp) => {
     inp.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
