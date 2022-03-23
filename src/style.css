@@ -34,11 +34,29 @@ li {
   border-bottom: 1px solid #e6e6e6;
 }
 
+.active {
+  background-color: #fffece;
+  color: #ffa500;
+}
+
+.drag {
+  cursor: move;
+}
+
+.active .drag {
+  display: none;
+}
+
+.active .delete {
+  display: block;
+}
+
 .input {
   font-size: 16px;
   border: none;
   outline: none;
   color: #555;
+  background-color: transparent;
 }
 
 .content {
@@ -52,10 +70,6 @@ li {
 
 .check {
   zoom: 1.4;
-}
-
-.drag {
-  cursor: move;
 }
 
 span,
