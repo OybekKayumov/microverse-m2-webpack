@@ -8,7 +8,7 @@ const addBtn = document.querySelector('#add');
 const input = document.querySelector('.input');
 
 let tasks = localStorage.getItem('tasks')
-  ? JSON.parse(localStorage.setItem('tasks'))
+  ? JSON.parse(localStorage.getItem('tasks'))
   : [];
 
 const renderTasks = () => {
@@ -30,6 +30,28 @@ const renderTasks = () => {
           </li>
       `;
     });
+  
+  document.querySelectorAll('li .input').forEach((inp) => {
+    inp.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
+        const obj = tasks.find((task) => task.index === id);
+        obj.description = inp.value.trim();
+        updateTask(tasks, obj);
+        inp.readOnly = true;
+      }
+    });
+  });
+
+  document.querySelectorAll('.delete').forEach((delBtn) => {
+    delBtn.addEventListener('click', () => {
+      const id = Number(delBtn.parentNode.parentNode.id.split('-')[1]);
+
+      removeTask(tasks, id);
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+      delBtn.parentNode.parentNode.remove();
+    });
+  });
 };
 
 renderTasks();
