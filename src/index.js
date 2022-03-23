@@ -1,30 +1,15 @@
 import 'material-icons/iconfont/material-icons.css';
 import './style.css';
 
-const listTasks = document.querySelector('.list-tasks');
+import { addTask, updateTask, removeTask } from './manage';
 
-const tasks = [
-  {
-    index: 0,
-    description: 'Task 1',
-    completed: true,
-  },
-  {
-    index: 3,
-    description: 'Task 4',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'Task 3',
-    completed: true,
-  },
-  {
-    index: 1,
-    description: 'Task 2',
-    completed: false,
-  },
-];
+const listTasks = document.querySelector('.list-tasks');
+const addBtn = document.querySelector('#add');
+const input = document.querySelector('.input');
+
+let tasks = localStorage.getItem('tasks')
+  ? JSON.parse(localStorage.setItem('tasks'))
+  : [];
 
 const renderTasks = () => {
   listTasks.innerHTML = '';
@@ -33,7 +18,7 @@ const renderTasks = () => {
     .sort((a, b) => a.index - b.index)
     .forEach((task) => {
       listTasks.innerHTML += `
-          <li>
+          <li id="task-${task.index}">
             <div class="content">
               <input type="checkbox" class="check" ${task.completed ? 'checked' : ''} />
               <input type="text" class="input" value='${task.description}' readonly />            
