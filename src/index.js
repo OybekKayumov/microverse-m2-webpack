@@ -33,3 +33,11 @@ const renderTasks = () => {
 };
 
 renderTasks();
+
+addBtn.addEventListener('click', addTask);
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    addTask(tasks, input);
+    renderTasks();
+  }
+});
