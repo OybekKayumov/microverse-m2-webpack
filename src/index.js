@@ -46,7 +46,7 @@ const renderTasks = () => {
       const inp = list.querySelector('.input');
       inp.readOnly = false;
       inp.focus();
-      inp.setSelectionsRange(inp.value.length, inp.value.length);
+      inp.setSelectionRange(inp.value.length, inp.value.length);
     });
   });
 
