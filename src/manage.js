@@ -21,6 +21,12 @@ const updateTask = (tasks, task) => {
 
 const removeTask = (tasks, index) => {
   tasks = tasks.filter((task) => task.index !== index);
+  tasks = tasks.map((task) => {
+    if (task.index > index) {
+      task.index -= 1;
+    }
+    return task;
+  });
 
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
