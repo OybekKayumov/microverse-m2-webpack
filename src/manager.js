@@ -13,7 +13,7 @@ export default class Tasks {
     localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 
-  delete(index) {
+  removeTask(index) {
     this.list = this.list.filter((task) => task.index !== index);
     this.list = this.list.map((task) => {
       if (task.index > index) {
@@ -37,6 +37,7 @@ export default class Tasks {
 
   completedClear() {
     this.list = this.list.sort((a, b) => a.index - b.index);
+    this.list = this.list.filter((task) => !task.completed);
     this.list = this.list.map((task, i) => {
       task.index = i + 1;
       return task;

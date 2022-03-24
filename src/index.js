@@ -62,12 +62,22 @@ const renderTasks = () => {
     });
   });
 
+  document.querySelectorAll('li .check').forEach((inp) => {
+    inp.addEventListener('change', () => {
+      const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
+      const obj = tasks.list.find((task) => task.index === id);
+      // console.log('inp.parentNode.parentNode: ', inp.parentNode.parentNode);
+      // console.log('id: ', id, 'obj: ', obj, 'inp: ', inp);
+      obj.completed = inp.checked;
+      tasks.edit(obj);
+    });
+  });
+
   document.querySelectorAll('.delete').forEach((delBtn) => {
     delBtn.addEventListener('click', () => {
       const id = Number(delBtn.parentNode.parentNode.id.split('-')[1]);
 
-      removeTask(tasks, id);
-      tasks = JSON.parse(localStorage.getItem('tasks'));
+      tasks.removeTask(id);
       delBtn.parentNode.parentNode.remove();
     });
   });
@@ -75,10 +85,23 @@ const renderTasks = () => {
 
 renderTasks();
 
+const addTask = () => {
+  tasks.add({
+    description: input.value.trim(),
+  });
+
+  input.value = '';
+  renderTasks();
+};
+
 addBtn.addEventListener('click', addTask);
 input.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
-    addTask(tasks, input);
-    renderTasks();
+    addTask();
   }
+});
+
+clearAll.addEventListener('click', () => {
+  tasks.completedClear();
+  renderTasks();
 });
