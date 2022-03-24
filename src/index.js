@@ -1,7 +1,7 @@
 import 'material-icons/iconfont/material-icons.css';
 import './style.css';
 
-import { addTask, updateTask, removeTask } from './manage';
+import Tasks from './manager';
 
 const listTasks = document.querySelector('.list-tasks');
 const addBtn = document.querySelector('#add');
