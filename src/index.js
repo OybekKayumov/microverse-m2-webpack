@@ -66,8 +66,6 @@ const renderTasks = () => {
     inp.addEventListener('change', () => {
       const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
       const obj = tasks.list.find((task) => task.index === id);
-      // console.log('inp.parentNode.parentNode: ', inp.parentNode.parentNode);
-      // console.log('id: ', id, 'obj: ', obj, 'inp: ', inp);
       obj.completed = inp.checked;
       tasks.edit(obj);
     });
