@@ -6,15 +6,14 @@ import Tasks from './manager';
 const listTasks = document.querySelector('.list-tasks');
 const addBtn = document.querySelector('#add');
 const input = document.querySelector('.input');
+const clearAll = document.querySelector('.clear-all');
 
-let tasks = localStorage.getItem('tasks')
-  ? JSON.parse(localStorage.getItem('tasks'))
-  : [];
+const tasks = new Tasks();
 
 const renderTasks = () => {
   listTasks.innerHTML = '';
 
-  tasks
+  tasks.list
     .sort((a, b) => a.index - b.index)
     .forEach((task) => {
       listTasks.innerHTML += `
@@ -54,9 +53,10 @@ const renderTasks = () => {
     inp.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         const id = Number(inp.parentNode.parentNode.id.split('-')[1]);
-        const obj = tasks.find((task) => task.index === id);
+        const obj = tasks.list.find((task) => task.index === id);
         obj.description = inp.value.trim();
-        updateTask(tasks, obj);
+        tasks.edit(obj);
+        inp.parentNode.parentNode.classList.remove('active');
         inp.readOnly = true;
       }
     });
