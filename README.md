@@ -2,6 +2,10 @@
 
 This is a minimalist ToDo list app to add, update and remove tasks easily.
 
+## Live demo
+
+[Live Demo Link](https://oybekkayumov.github.io/microverse-m2-webpack/)
+
 ## Built using
 
 - HTML
@@ -37,7 +41,7 @@ to build your project run:
 npm run build
 ```
 
-## Authors
+## Author
 
 👤 **Oybek Kayumov**
 
