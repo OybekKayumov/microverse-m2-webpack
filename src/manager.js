@@ -1,5 +1,4 @@
-// export default
-class Tasks {
+export default class Tasks {
   constructor() {
     this.list = localStorage.getItem('tasks')
       ? JSON.parse(localStorage.getItem('tasks'))
@@ -47,5 +46,3 @@ class Tasks {
     localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 }
-
-module.exports = Tasks;

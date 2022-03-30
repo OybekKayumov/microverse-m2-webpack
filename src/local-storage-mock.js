@@ -1,4 +1,4 @@
-// export default
+export default
 class LocalStorage {
   constructor() {
     this.store = {};
@@ -20,5 +20,3 @@ class LocalStorage {
     this.store = {};
   }
 }
-
-module.exports = LocalStorage;
