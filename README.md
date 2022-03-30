@@ -2,6 +2,9 @@
 
 This is a minimalist ToDo list app to add, update and remove tasks easily.
 
+![image](https://user-images.githubusercontent.com/85465559/160863796-89696ac2-30cc-4a7a-96a7-918bffc84bcb.png)
+
+
 ## Live demo
 
 [Live Demo Link](https://oybekkayumov.github.io/microverse-m2-webpack/)
