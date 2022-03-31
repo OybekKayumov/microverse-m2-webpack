@@ -4,7 +4,6 @@ import './style.css';
 import Tasks from './manager';
 import renderTasks from './renderTasks';
 
-// const listTasks = document.querySelector('.list-tasks');
 const addBtn = document.querySelector('#add');
 const input = document.querySelector('.input');
 const clearAll = document.querySelector('.clear-all');
