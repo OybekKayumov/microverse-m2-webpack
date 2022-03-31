@@ -144,4 +144,11 @@ describe('test DOM manipulation functions', () => {
 
     expect(document.querySelectorAll('li').length).toBe(1);
   });
+
+  it('because the only task left is complete, the list should be empty after clearing all completed', () => {
+    tasks.completedClear();
+    renderTasks(tasks);
+
+    expect(document.querySelectorAll('li').length).toBe(0);
+  });
 });
