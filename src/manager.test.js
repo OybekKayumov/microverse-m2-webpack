@@ -27,3 +27,15 @@ describe('test delete', () => {
     expect(tasks.list.length).toBe(1);
   });
 });
+
+describe('test edit task', () => {
+  const tasks = new Tasks();
+  tasks.add({ description: 'Task 1' });
+  const currTask = tasks.list[0];
+  currTask.description = 'description edited';
+  tasks.edit(currTask);
+
+  it('test list edited with new description', () => {
+    expect(tasks.list[0].description).toBe('description edited');
+  });
+});
