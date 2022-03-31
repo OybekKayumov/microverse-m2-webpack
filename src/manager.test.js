@@ -1,5 +1,32 @@
+/** * @jest-environment jsdom */
 import Tasks from './manager.js';
 import LocalStorage from './local-storage-mock.js';
+import renderTasks from './renderTasks.js';
+
+document.body.innerHTML = `
+  <main>
+    <div class="head">
+      <h2>Today's To Do</h2>
+      <span class="material-icons">autorenew</span>
+    </div>
+    <div class="table">
+      <form class="add-task">
+        <input
+          class="input"
+          id="input"
+          type="text"
+          placeholder="Add to your list"
+          required
+        />
+        <button type="submit" id="add">
+          <span class="material-icons">keyboard_return</span>
+        </button>
+      </form>
+      <ul class="list-tasks"></ul>
+    </div>
+    <div class="clear-all">Clear all completed</div>
+  </main>
+`;
 
 global.localStorage = new LocalStorage();
 
@@ -66,5 +93,31 @@ describe('test clear all completed', () => {
   it('test the list is empty', () => {
     tasks.completedClear();
     expect(tasks.list.length).toBe(0);
+  });
+});
+
+describe('test local storage', () => {
+  const tasks = new Tasks();
+
+  it('check localStorage is empty after clear', () => {
+    localStorage.clear();
+    expect(localStorage.getItem('tasks')).toBeNull();
+  });
+
+  it('check localStorage is not empty after adding', () => {
+    tasks.add({ description: 'Task 1' });
+    expect(localStorage.getItem('tasks')).not.toBeNull();
+  });
+});
+
+describe('test DOM manipulation functions', () => {
+  localStorage.clear();
+  const tasks = new Tasks();
+
+  it('see one li in the list after adding', () => {
+    tasks.add({ description: 'Task 1' });
+    renderTasks(tasks);
+
+    expect(document.querySelectorAll('li').length).toBe(1);
   });
 });
