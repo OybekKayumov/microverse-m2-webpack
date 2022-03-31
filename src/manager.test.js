@@ -39,3 +39,15 @@ describe('test edit task', () => {
     expect(tasks.list[0].description).toBe('description edited');
   });
 });
+
+describe('test completed tasks', () => {
+  const tasks = new Tasks();
+  tasks.add({ description: 'new task' });
+  const currTask = tasks.list[0];
+  currTask.completed = true;
+  tasks.edit(currTask);
+
+  it('test task completed is true', () => {
+    expect(tasks.list[0].completed).toBeTruthy();
+  });
+});
