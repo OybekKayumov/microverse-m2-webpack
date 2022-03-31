@@ -135,4 +135,13 @@ describe('test DOM manipulation functions', () => {
 
     expect(tasks.list[0].completed).toBeTruthy();
   });
+
+  it('the li count should be one after remove the second task', () => {
+    tasks.add({ description: 'last task' });
+    renderTasks(tasks);
+
+    document.querySelectorAll('li .delete')[1].click();
+
+    expect(document.querySelectorAll('li').length).toBe(1);
+  });
 });
