@@ -51,3 +51,20 @@ describe('test completed tasks', () => {
     expect(tasks.list[0].completed).toBeTruthy();
   });
 });
+
+describe('test clear all completed', () => {
+  const tasks = new Tasks();
+
+  const firstTask = tasks.list[0];
+  firstTask.completed = true;
+  tasks.edit(firstTask);
+
+  const secondTask = tasks.list[1];
+  secondTask.completed = true;
+  tasks.edit(secondTask);
+
+  it('test the list is empty', () => {
+    tasks.completedClear();
+    expect(tasks.list.length).toBe(0);
+  });
+});
