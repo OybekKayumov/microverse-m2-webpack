@@ -129,4 +129,10 @@ describe('test DOM manipulation functions', () => {
 
     expect(document.querySelector('li .input').value).toBe('Task 2');
   });
+
+  it('the complete true after click checkbox', () => {
+    document.querySelector('li .check').click();
+
+    expect(tasks.list[0].completed).toBeTruthy();
+  });
 });
