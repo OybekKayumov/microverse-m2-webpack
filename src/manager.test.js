@@ -120,4 +120,13 @@ describe('test DOM manipulation functions', () => {
 
     expect(document.querySelectorAll('li').length).toBe(1);
   });
+
+  it('task description change on the page after update', () => {
+    const currTask = tasks.list[0];
+    currTask.description = 'Task 2';
+    tasks.edit(currTask);
+    renderTasks(tasks);
+
+    expect(document.querySelector('li .input').value).toBe('Task 2');
+  });
 });
